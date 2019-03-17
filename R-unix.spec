@@ -4,13 +4,15 @@
 #
 Name     : R-unix
 Version  : 1.5
-Release  : 5
+Release  : 6
 URL      : https://cran.r-project.org/src/contrib/unix_1.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/unix_1.5.tar.gz
 Summary  : POSIX System Utilities
 Group    : Development/Tools
 License  : MIT
 Requires: R-unix-lib = %{version}-%{release}
+Requires: R-assertthat
+BuildRequires : R-assertthat
 BuildRequires : buildreq-R
 
 %description
@@ -32,10 +34,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551071087
+export SOURCE_DATE_EPOCH=1552803190
 
 %install
-export SOURCE_DATE_EPOCH=1551071087
+export SOURCE_DATE_EPOCH=1552803190
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -71,8 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library unix|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  unix || :
 
 
 %files
@@ -98,10 +99,10 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/unix/help/unix.rdx
 /usr/lib64/R/library/unix/html/00Index.html
 /usr/lib64/R/library/unix/html/R.css
-/usr/lib64/R/library/unix/libs/symbols.rds
+/usr/lib64/R/library/unix/tests/testthat.R
+/usr/lib64/R/library/unix/tests/testthat/test-forking.R
+/usr/lib64/R/library/unix/tests/testthat/test-process.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/unix/libs/unix.so
-/usr/lib64/R/library/unix/libs/unix.so.avx2
-/usr/lib64/R/library/unix/libs/unix.so.avx512
