@@ -4,10 +4,10 @@
 #
 Name     : R-unix
 Version  : 1.5.1
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/unix_1.5.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/unix_1.5.1.tar.gz
-Summary  : to system utilities found in most Unix systems.
+Summary  : POSIX System Utilities
 Group    : Development/Tools
 License  : MIT
 Requires: R-unix-lib = %{version}-%{release}
@@ -26,21 +26,22 @@ lib components for the R-unix package.
 
 %prep
 %setup -q -c -n unix
+cd %{_builddir}/unix
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580495496
+export SOURCE_DATE_EPOCH=1589565616
 
 %install
-export SOURCE_DATE_EPOCH=1580495496
+export SOURCE_DATE_EPOCH=1589565616
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
