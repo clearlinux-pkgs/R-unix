@@ -4,7 +4,7 @@
 #
 Name     : R-unix
 Version  : 1.5.2
-Release  : 19
+Release  : 20
 URL      : https://cran.r-project.org/src/contrib/unix_1.5.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/unix_1.5.2.tar.gz
 Summary  : POSIX System Utilities
